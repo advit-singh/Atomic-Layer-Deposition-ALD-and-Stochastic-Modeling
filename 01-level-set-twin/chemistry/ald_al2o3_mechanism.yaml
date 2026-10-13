@@ -1,0 +1,104 @@
+
+generator: ald-al2o3-mechanism-builder
+description: |-
+  Surface reaction mechanism for thermal ALD of Al2O3 from
+  trimethylaluminum (TMA, Al(CH3)3) and H2O.
+cantera-version: 3.2.0
+
+units: {length: cm, time: s, quantity: mol, activation-energy: kJ/mol}
+
+phases:
+  - name: gas
+    thermo: ideal-gas
+    elements: [Al, C, H, O, N]
+    species: [TMA, H2O, CH4, N2]
+    state: {T: 300.0, P: 1.0 atm}
+
+  - name: Al2O3_bulk
+    thermo: fixed-stoichiometry
+    elements: [Al, O]
+    species: [Al2O3s]
+
+  - name: Al2O3_surface
+    thermo: ideal-surface
+    elements: [Al, C, H, O, N]
+    species: [OH_s, O_Al_CH3_2_s]
+    kinetics: surface
+    reactions: all
+    site-density: 1.66e-9   # mol/cm^2 (~1e15 sites/cm^2, -OH density on hydroxylated oxide)
+    adjacent-phases: [gas, Al2O3_bulk]
+    state: {T: 300.0, coverages: {OH_s: 1.0, O_Al_CH3_2_s: 0.0}}
+
+species:
+  - name: TMA
+    composition: {Al: 1, C: 3, H: 9}
+    thermo:
+      model: NASA7
+      temperature-ranges: [200.0, 1000.0, 3500.0]
+      data:
+        - [4.0, 0.02, -1.0e-5, 2.0e-9, -1.5e-13, -8000.0, 10.0]
+        - [4.0, 0.02, -1.0e-5, 2.0e-9, -1.5e-13, -8000.0, 10.0]
+
+  - name: H2O
+    composition: {H: 2, O: 1}
+    thermo:
+      model: NASA7
+      temperature-ranges: [200.0, 1000.0, 3500.0]
+      data:
+        - [4.198, -2.036e-3, 6.520e-6, -5.487e-9, 1.771e-12, -30293.7, -0.849]
+        - [3.033, 2.176e-3, -1.640e-7, -9.704e-11, 1.682e-14, -30004.3, 4.966]
+
+  - name: CH4
+    composition: {C: 1, H: 4}
+    thermo:
+      model: NASA7
+      temperature-ranges: [200.0, 1000.0, 3500.0]
+      data:
+        - [5.149, -0.01367, 4.918e-5, -4.847e-8, 1.666e-11, -10246.6, -4.643]
+        - [1.911, 9.603e-3, -3.567e-6, 6.075e-10, -3.923e-14, -10099.2, 8.483]
+
+  - name: N2
+    composition: {N: 2}
+    thermo:
+      model: NASA7
+      temperature-ranges: [200.0, 1000.0, 3500.0]
+      data:
+        - [3.531, -1.237e-4, -5.030e-7, 2.435e-9, -1.409e-12, -1046.98, 2.968]
+        - [2.953, 1.397e-3, -4.927e-7, 7.870e-11, -4.608e-15, -923.949, 5.872]
+
+  - name: OH_s
+    composition: {O: 1, H: 1}
+    thermo:
+      model: constant-cp
+      T0: 300.0
+      h0: -25.0 kJ/mol
+      s0: 0.0 J/mol/K
+      cp0: 0.0 J/mol/K
+
+  - name: O_Al_CH3_2_s
+    composition: {Al: 1, O: 1, C: 2, H: 6}
+    thermo:
+      model: constant-cp
+      T0: 300.0
+      h0: -120.0 kJ/mol
+      s0: 0.0 J/mol/K
+      cp0: 0.0 J/mol/K
+
+  - name: Al2O3s
+    composition: {Al: 2, O: 3}
+    thermo:
+      model: constant-cp
+      T0: 300.0
+      h0: -1675.7 kJ/mol
+      s0: 50.9 J/mol/K
+      cp0: 79.0 J/mol/K
+    equation-of-state:
+      model: constant-volume
+      density: 3.1 g/cm^3
+
+reactions:
+  - equation: TMA + OH_s => O_Al_CH3_2_s + CH4
+    rate-constant: {A: 3.6e+7, b: 0.5, Ea: 12.0}
+
+  - equation: 2 O_Al_CH3_2_s + 3 H2O => 2 OH_s + Al2O3s + 4 CH4
+    rate-constant: {A: 1.1e+8, b: 0.5, Ea: 18.0}
