@@ -1,6 +1,6 @@
 # Al2O3 ALD surrogates
 
-I did this work with the Khan Lab at Georgia Tech. Prasanna handled the day-to-day mentoring. The process is thermal Al2O3 from trimethylaluminum and water, on a FinFET fin 42 nm tall. [Cantera](https://cantera.org/) solves the surface reactions. [ViennaPS](https://github.com/ViennaTools/ViennaPS) grows the film. A [PhysicsNeMo](https://github.com/NVIDIA/physicsnemo) fully connected network is trained on those runs.
+This work is conducted as part of the Khan Lab at Georgia Tech. The process is thermal Al2O3 from trimethylaluminum and water, on a FinFET fin 42 nm tall. [Cantera](https://cantera.org/) solves the surface reactions. [ViennaPS](https://github.com/ViennaTools/ViennaPS) grows the film. A [PhysicsNeMo](https://github.com/NVIDIA/physicsnemo) fully connected network is trained on those runs.
 
 The folders follow the order of the work.
 
