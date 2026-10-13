@@ -1,0 +1,12 @@
+{
+    "python_version": "3.12.13",
+    "pytorch_version": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "device_name": "Tesla T4",
+    "device_count": 1,
+    "gpu_total_memory_mb": 14912.69,
+    "cpu_count_logical": 2,
+    "cpu_count_physical": 1,
+    "system_ram_gb": 12.67
+}
