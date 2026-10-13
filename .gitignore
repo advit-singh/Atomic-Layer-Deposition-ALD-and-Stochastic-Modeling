@@ -1,0 +1,8 @@
+desktop.ini
+.ipynb_checkpoints/
+__pycache__/
+*.pt
+topography/
+ald_spatial_dataset_n*.csv
+_build_repo.py
+_stats.json
