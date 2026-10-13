@@ -25,7 +25,7 @@ phases:
     species: [OH_s, O_Al_CH3_2_s]
     kinetics: surface
     reactions: all
-    site-density: 1.66e-9   # mol/cm^2 (~1e15 sites/cm^2, -OH density on hydroxylated oxide)
+    site-density: 1.66e-9
     adjacent-phases: [gas, Al2O3_bulk]
     state: {T: 300.0, coverages: {OH_s: 1.0, O_Al_CH3_2_s: 0.0}}
 

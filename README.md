@@ -17,3 +17,5 @@ For model P3 trained on 8,000 samples, the ablation table gives a global spatial
 The full spatial tables, the per-run meshes, and the weight files are not in git. Run a notebook from its own directory. `BASE_PATH` is that directory.
 
 The deck in `slides/first-and-second-simulation-presentation.pdf` is the spatial check and the 16-model matrix. Where the deck and a CSV disagree, the CSV is the one to use.
+
+`slides/8-24-slides.pdf` is the 24 August deck. It names the 100 thickness indices: fin peaks at 0 to 5 and 94 to 99, sidewalls at 6 to 39 and 61 to 93, trench bottom at 40 to 60. It prints the P3 error as 0.000041 nm and R² 0.999988. Those are the rounded ablation-table figures. The deck also says a profile evaluation went from minutes to under 0.001 ms per sample. The minutes half of that sentence is only in the deck. `training_and_inference_timings.csv` records 0.00056 ms for one P3 sample trained on 8,000 rows.

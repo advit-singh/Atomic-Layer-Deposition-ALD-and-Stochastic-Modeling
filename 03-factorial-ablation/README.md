@@ -17,7 +17,7 @@ The deck in `slides/first-and-second-simulation-presentation.pdf` prints this ho
 - P0 is data MSE.
 - P1 adds a penalty on thickness when the cycle count is set to 0.
 - P2 adds the top-fin derivative matched to growth per cycle.
-- P3 uses a weighted data MSE (sidewall indices 6 to 39 and 61 to 93 at 1.5, indices 40 to 60 at 3), the P1 and P2 terms, a second derivative of mean thickness with respect to cycles that ramps in over the first 10 cycles, and 0.1 times the square of the discrete second difference along the trench.
+- P3 uses a weighted data MSE (sidewall indices 6 to 39 and 61 to 93 at 1.5, indices 40 to 60 at 3), the P1 and P2 terms, a second derivative of mean thickness with respect to cycles that ramps in over the first 10 cycles, and 0.1 times the square of the discrete second difference along the trench. The 24 August deck uses the same cuts and calls indices 0 to 5 and 94 to 99 the fin peaks.
 
 The physics terms are multiplied by 0.5. The network is again six layers of width 128. Adam at 2e-3, weight decay 5e-5, gradient clip 1, up to 2,500 epochs, patience 300.
 
